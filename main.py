@@ -19,18 +19,20 @@ def save_contacts(contacts):
 
 
 def add_contact(contacts):
-    name = input("Name: ")
-    phone = input("Phone number: ")
-    email = input("Email address: ")
+    print("\nGreat! Let's add a new contact.")
+    name = input("What's their name? ")
+    phone = input("What's their phone number? ")
+    email = input("And their email address? ")
     contacts.append({"name": name, "phone": phone, "email": email})
     save_contacts(contacts)
-    print("Contact added.")
+    print(f"Got it! {name} has been added to your contacts.")
 
 
 def list_contacts(contacts):
     if not contacts:
-        print("No contacts found.")
+        print("Your contact list is empty. Add someone to get started!")
         return
+    print("\nHere are all your contacts:")
     for contact in contacts:
         print(f"Name: {contact['name']}, Phone: {contact['phone']}, Email: {contact['email']}")
 
@@ -38,10 +40,11 @@ def list_contacts(contacts):
 def main():
     contacts = load_contacts()
     while True:
-        print("\n1. Add a contact")
-        print("2. List all contacts")
-        print("3. Exit")
-        choice = input("Choose an option: ")
+        print("\nWhat would you like to do?")
+        print("  1. Add a contact")
+        print("  2. List all contacts")
+        print("  3. Exit")
+        choice = input("Enter your choice: ")
         if choice == "1":
             add_contact(contacts)
         elif choice == "2":
@@ -49,7 +52,7 @@ def main():
         elif choice == "3":
             break
         else:
-            print("Invalid choice. Please enter 1, 2, or 3.")
+            print("That's not a valid option. Please enter 1, 2, or 3.")
 
 
 if __name__ == "__main__":
